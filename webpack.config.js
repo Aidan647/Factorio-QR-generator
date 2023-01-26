@@ -4,7 +4,7 @@ const webpack = require("webpack")
 module.exports = {
 	entry: "./src/index.ts",
 	// devtool: "source-map",
-	mode: "production",
+	mode: "development",
 	module: {
 		rules: [
 			{
@@ -14,17 +14,17 @@ module.exports = {
 			},
 		],
 	},
-	plugins: [
-		new webpack.ProvidePlugin({
-			Buffer: ["buffer", "Buffer"],
-		}),
-	],
-	resolve: {
-		extensions: [".tsx", ".ts", ".js"],
-		fallback: {
-			buffer: require.resolve("buffer"),
-		},
-	},
+	// plugins: [
+	// 	new webpack.ProvidePlugin({
+	// 		Buffer: ["buffer", "Buffer"],
+	// 	}),
+	// ],
+	// resolve: {
+	// 	extensions: [".tsx", ".ts", ".js"],
+	// 	fallback: {
+	// 		buffer: require.resolve("buffer"),
+	// 	},
+	// },
 	output: {
 		filename: "bundle.js",
 		path: path.resolve(__dirname, "dist"),

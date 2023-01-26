@@ -13,6 +13,7 @@ const decode = async (data: string) => {
 	return JSON.parse(new TextDecoder().decode(inflate(toUint8Array(data.substring(1)))))
 }
 const encode = async (data: any) => {
+	// console.log(Buffer)
 	return "0" + Buffer.from(deflate(JSON.stringify(data), { level: 9 })).toString("base64")
 }
 const getSettings = async () => {
@@ -155,3 +156,14 @@ const generate = async () => {
 	;(document.getElementById("result") as HTMLInputElement).value = await encode(blueprint)
 }
 window.generate = generate
+
+
+// id= editor
+// on click on editor open in new tab where source is result text
+document.getElementById("editor")!.addEventListener("click", () => {
+	const result = document.getElementById("result") as HTMLInputElement
+	if (result.value.length === 0) {
+		return
+	}
+	const win = window.open("https://fbe.teoxoy.com/?sorce=" + result.value, "_blank")
+})
